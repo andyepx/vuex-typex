@@ -9,7 +9,7 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "dependencies": {
-    "vuex": "^2.5.0"
+    "vuex": "^3.0.0"
   },
   "devDependencies": {
     "@types/chai": "^3.4.35",

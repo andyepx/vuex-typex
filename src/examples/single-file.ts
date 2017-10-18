@@ -1,5 +1,5 @@
 import { getStoreBuilder } from "../index"
-import Vuex, { Store, ActionContext } from "vuex"
+import Vuex, {ActionContext} from "vuex"
 import Vue from "vue"
 const delay = (duration: number) => new Promise((c, e) => setTimeout(c, duration))
 

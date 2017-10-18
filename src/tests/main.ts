@@ -1,17 +1,16 @@
+import Vue from "vue"
+import Vuex, {Store} from "vuex"
 import { expect } from "chai"
-import * as Vue from "vue"
-import * as Vuex from "vuex"
 import { buildStore } from "./store"
 import { RootState } from "./store/index"
 import birthday from "./store/birthday/birthday"
-import auth from "./store/auth/auth"
 
-let store: Vuex.Store<RootState>
+let store: Store<RootState>;
 
 async function test()
 {
-    Vue.use(Vuex)
-    store = buildStore()
+    Vue.use(Vuex);
+    store = buildStore();
     store.replaceState({
         birthday: {
             birthdays: [
@@ -25,10 +24,10 @@ async function test()
             ]
         },
         auth: { isLoggedIn: false, userID: "" }
-    })
-    expect(birthday.oldestName).equal("Erlich")
-    await birthday.dispatchRemoveFirstAfterDelay(20)
-    await birthday.dispatchRemoveFirstAfterDelay(20)
+    });
+    expect(birthday.oldestName).equal("Erlich");
+    await birthday.dispatchRemoveFirstAfterDelay(20);
+    await birthday.dispatchRemoveFirstAfterDelay(20);
     expect(birthday.oldestName).equal("Bertram")
 }
 

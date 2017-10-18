@@ -1,6 +1,6 @@
 import { expect } from "chai"
-import * as Vue from "vue"
-import * as Vuex from "vuex"
+import Vue from "vue"
+import Vuex, {Store} from "vuex"
 import { buildStore } from "./store"
 import { RootState } from "./store/index"
 import birthday, { birthdayModuleBuilder } from "./store/birthday/birthday"
@@ -9,17 +9,17 @@ import { getStoreBuilder } from "../index"
 
 describe("Output the store", () =>
 {
-    let store: Vuex.Store<RootState>
+    let store: Store<RootState>;
 
     beforeEach(() =>
     {
-        Vue.use(Vuex)
-        store = buildStore()
+        Vue.use(Vuex);
+        store = buildStore();
         store.replaceState({
             birthday: { birthdays: [] },
             auth: { isLoggedIn: false, userID: "" }
         })
-    })
+    });
 
     describe("then try to add another module", () =>
     {
@@ -27,7 +27,7 @@ describe("Output the store", () =>
         {
             expect(() => getStoreBuilder().module("blah", {})).to.throw()
         })
-    })
+    });
 
     describe("then create a different store and try to add a module", () =>
     {
@@ -35,9 +35,9 @@ describe("Output the store", () =>
         {
             expect(() =>
             {
-                const anotherStore = getStoreBuilder("another")
+                const anotherStore = getStoreBuilder("another");
                 anotherStore.module("another-module", {})
             }).to.not.throw()
         })
     })
-})
+});
